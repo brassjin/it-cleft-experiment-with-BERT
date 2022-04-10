@@ -1,6 +1,6 @@
 rm(list=ls(all=TRUE))
-setwd("/Users/brassjin/Library/Mobile Documents/com~apple~CloudDocs/in progress/it-cleft paper/CODE")
-DATA_comp<-read.csv("/Users/brassjin/Library/Mobile Documents/com~apple~CloudDocs/in progress/it-cleft paper/CODE/Surprisal/it-cleft_DATA_COMP.csv",header=T,stringsAsFactors = T)
+setwd("[pathname]")
+DATA_comp<-read.csv("[pathname]/it-cleft_DATA_COMP.csv",header=T,stringsAsFactors = T)
 
 str(DATA_comp)
 summary(DATA_comp)
@@ -48,14 +48,14 @@ for (i in 1:2)
   theerr<-1.96*thesd/10
   theupper<-themean+theerr
   thelower<-themean-theerr
-  lines(c(i,i),c(theupper, thelower), col="black", lty=1) 
-  lines(c(i-0.1,i+0.1),c(theupper,theupper), col="black", lty=1) 
-  lines(c(i-0.1,i+0.1),c(thelower,thelower), col="black", lty=1) 
-  
+  lines(c(i,i),c(theupper, thelower), col="black", lty=1)
+  lines(c(i-0.1,i+0.1),c(theupper,theupper), col="black", lty=1)
+  lines(c(i-0.1,i+0.1),c(thelower,thelower), col="black", lty=1)
+
   CUR=subset(DATA_comp, order.case==i & DATA_comp$comp=="who")
   themean<-mean(CUR$sur)
   thesd<-sd(CUR$sur)
-  print(paste("who", i, themean, thesd))  
+  print(paste("who", i, themean, thesd))
   theerr<-1.96*thesd/10
   theupper<-themean+theerr
   thelower<-themean-theerr
@@ -84,4 +84,4 @@ print(summary(twoway_comp_case), digits=5)
 print(model.tables(twoway_comp_case, type="mean"))
 print("------posthoc---------")
 print(TukeyHSD(twoway_comp_case))
-plot(TukeyHSD(twoway_comp_case)) 
+plot(TukeyHSD(twoway_comp_case))

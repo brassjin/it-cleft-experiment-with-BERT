@@ -1,6 +1,6 @@
 rm(list=ls(all=TRUE))
-setwd("/Users/brassjin/Library/Mobile Documents/com~apple~CloudDocs/in progress/it-cleft paper/CODE")
-DATA_case<-read.csv("/Users/brassjin/Library/Mobile Documents/com~apple~CloudDocs/in progress/it-cleft paper/CODE/Surprisal/it-cleft_DATA_CASE.csv", header=T, stringsAsFactors = T)
+setwd("[pathname]")
+DATA_case<-read.csv("[pathname]/it-cleft_DATA_CASE.csv", header=T, stringsAsFactors = T)
 
 str(DATA_case)
 summary(DATA_case)
@@ -48,14 +48,14 @@ for (i in 1:2)
   theerr<-1.96*thesd/10
   theupper<-themean+theerr
   thelower<-themean-theerr
-  lines(c(i,i),c(theupper, thelower), col="red", lty=2) 
-  lines(c(i-0.1,i+0.1),c(theupper,theupper), col="red", lty=2) 
-  lines(c(i-0.1,i+0.1),c(thelower,thelower), col="red", lty=2) 
-  
+  lines(c(i,i),c(theupper, thelower), col="red", lty=2)
+  lines(c(i-0.1,i+0.1),c(theupper,theupper), col="red", lty=2)
+  lines(c(i-0.1,i+0.1),c(thelower,thelower), col="red", lty=2)
+
   CUR=subset(DATA_case, order.comp==i & case=="ACC")
   themean<-mean(CUR$sur)
   thesd<-sd(CUR$sur)
-  print(paste("ACC", i, themean, thesd))  
+  print(paste("ACC", i, themean, thesd))
   theerr<-1.96*thesd/10
   theupper<-themean+theerr
   thelower<-themean-theerr
@@ -115,14 +115,14 @@ for (i in 1:2)
   theerr<-1.96*thesd/10
   theupper<-themean+theerr
   thelower<-themean-theerr
-  lines(c(i,i),c(theupper, thelower), col="red", lty=2) 
-  lines(c(i-0.1,i+0.1),c(theupper,theupper), col="red", lty=2) 
-  lines(c(i-0.1,i+0.1),c(thelower,thelower), col="red", lty=2) 
-  
+  lines(c(i,i),c(theupper, thelower), col="red", lty=2)
+  lines(c(i-0.1,i+0.1),c(theupper,theupper), col="red", lty=2)
+  lines(c(i-0.1,i+0.1),c(thelower,thelower), col="red", lty=2)
+
   CUR=subset(DATA_case, order.gap==i & case=="ACC")
   themean<-mean(CUR$sur)
   thesd<-sd(CUR$sur)
-  print(paste("ACC", i, themean, thesd))  
+  print(paste("ACC", i, themean, thesd))
   theerr<-1.96*thesd/10
   theupper<-themean+theerr
   thelower<-themean-theerr
