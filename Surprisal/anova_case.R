@@ -4,6 +4,8 @@ setwd("[pathname]")
 #load data
 DATA_case<-read.csv("[pathname]/it-cleft_DATA_CASE.csv", header=T, stringsAsFactors = T)
 
+ACC_base_wil <- read.csv("[pathname]/ACC_base_wil.csv", header = T)
+NOM_base_wil <- read.csv("[pathname]/Surprisal/NOM_base_wil.csv", header = T)
 SUBJ_wil <- read.csv("[pathname]/SUBJ_wil.csv", header = T)
 OBJ_wil <- read.csv("[pathname]/OBJ_wil.csv", header = T)
 THAT_wil <- read.csv("[pathname]/THAT_wil.csv", header = T)
@@ -143,7 +145,13 @@ for (i in 1:2)
 ####################
 ####################
 #Statistics
+#CASE
 
+print("================")
+print("------wilcox-test---------")
+print(wilcox.test(ACC_base_wil$sur, NOM_base_wil$sur, paired = T, alternative = "two.sided"))
+
+###################
 #COMP
 print("================")
 print("default")
@@ -153,7 +161,7 @@ print(bartlett.test(sur~comp, data=DATA_case))
 print("------t-test---------")
 print(t.test(DATA_case$sur~DATA_case$comp))
 print("------wilcox-test---------")
-print(wilcox.test(DATA_case$sur~DATA_case$comp))
+print(wilcox.test(THAT_wil$sur, WHO_wil$sur, paired = T, alternative = "two.sided"))
 print("------two-way---------")
 twoway_case_comp <- aov(sur~case*comp, data = DATA_case)
 print(summary(twoway_case_comp), digits = 5)
@@ -187,7 +195,7 @@ print(bartlett.test(sur~gap, data=DATA_case))
 print("------t-test---------")
 print(t.test(DATA_case$sur~DATA_case$gap))
 print("------wilcox-test---------")
-print(wilcox.test(DATA_case$sur~DATA_case$gap))
+print(wilcox.test(OBJ_wil$sur, SUBJ_wil$sur, paired = T, alternative = "two.sided"))
 print("------two-way---------")
 twoway_comp_case <- aov(sur~case*gap, data = DATA_case)
 print(summary(twoway_comp_case), digits = 5)
