@@ -1,6 +1,11 @@
 rm(list=ls(all=TRUE))
 setwd("[pathname]")
+
+#load data
 DATA_comp<-read.csv("[pathname]/it-cleft_DATA_COMP.csv",header=T,stringsAsFactors = T)
+
+ACC_wil <- read.csv("[pathname]/ACC_wil.csv", header = T)
+NOM_wil <- read.csv("[pathname]/Surprisal/NOM_wil.csv", header = T)
 
 str(DATA_comp)
 summary(DATA_comp)

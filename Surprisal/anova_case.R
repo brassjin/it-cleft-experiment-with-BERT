@@ -1,6 +1,13 @@
 rm(list=ls(all=TRUE))
 setwd("[pathname]")
+
+#load data
 DATA_case<-read.csv("[pathname]/it-cleft_DATA_CASE.csv", header=T, stringsAsFactors = T)
+
+SUBJ_wil <- read.csv("[pathname]/SUBJ_wil.csv", header = T)
+OBJ_wil <- read.csv("[pathname]/OBJ_wil.csv", header = T)
+THAT_wil <- read.csv("[pathname]/THAT_wil.csv", header = T)
+WHO_wil <- read.csv("[pathname]/WHO_wil.csv", header = T)
 
 str(DATA_case)
 summary(DATA_case)
